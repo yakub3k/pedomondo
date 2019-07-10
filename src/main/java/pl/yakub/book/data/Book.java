@@ -1,5 +1,6 @@
 package pl.yakub.book.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +19,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Book {
 
     @Id
@@ -25,7 +27,7 @@ public class Book {
     private Integer id;
 
     @Setter
-    private String name;
+    private String title;
 
     @Setter
     @ManyToOne
