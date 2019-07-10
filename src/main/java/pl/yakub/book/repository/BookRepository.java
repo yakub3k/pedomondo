@@ -8,5 +8,5 @@ import pl.yakub.book.data.Book;
 @RepositoryRestResource
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    Book getBookByName(String name);
+    Book getBookByTitle(String title);
 }
