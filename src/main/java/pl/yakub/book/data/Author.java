@@ -23,10 +23,6 @@ public class Author {
     @Column(unique = true)
     private String name;
 
-//    @Setter
-//    @OneToMany(mappedBy = "author")
-//    private List<Book> books = new ArrayList<>();
-
     public Author(String name) {
         this.name = name;
     }

@@ -47,4 +47,8 @@ public class BookService {
         }
         return bookRepository.save(new Book(title, authorByName));
     }
+
+    public List<Book> getAllAuthorBooks(Long authorId) {
+        return bookRepository.getBookByAuthorId(authorId);
+    }
 }
