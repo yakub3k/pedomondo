@@ -33,14 +33,4 @@ public class AuthorController {
         return service.getAuthorById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Unknown Author Id: " + id));
     }
-//
-//    @DeleteMapping("{id}")
-//    public void deleteBook(@PathVariable Integer id){
-//        service.deleteBook(id);
-//    }
-//
-//    @PutMapping()
-//    public Book addBook(@PathVariable Book book){
-//        return service.addBook(book);
-//    }
 }
