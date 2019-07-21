@@ -1,15 +1,11 @@
 package pl.yakub.book.contoller;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.yakub.book.data.Author;
-import pl.yakub.book.data.Book;
 import pl.yakub.book.service.AuthorService;
-import pl.yakub.book.service.BookService;
 
 import java.util.List;
 
