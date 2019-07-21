@@ -25,11 +25,6 @@ public class AuthorService {
         if (exists)
             return authorRepository.getAuthorByName(author.getName());
         return authorRepository.save(author);
-//
-//        Author existedAuthor = authorRepository.getAuthorByName(author.getName());
-//        return (existedAuthor == null)
-//                ? authorRepository.save(author)
-//                : existedAuthor;
     }
 
     public List<Author> getAll() {

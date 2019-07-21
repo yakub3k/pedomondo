@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @RepositoryRestResource
-public interface BookRepository extends JpaRepository<Book, Integer> {
+public interface BookRepository extends JpaRepository<Book, Long> {
 
     Book getBookByTitle(String title);
 

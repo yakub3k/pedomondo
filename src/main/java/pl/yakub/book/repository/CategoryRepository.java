@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import pl.yakub.book.data.Category;
 
 @RepositoryRestResource
-public interface CategoryRepository extends JpaRepository<Category, Integer> {
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    Category getTypeByName(String name);
+    Category getCategoryByName(String name);
 }

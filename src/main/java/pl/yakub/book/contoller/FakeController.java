@@ -10,6 +10,7 @@ import pl.yakub.book.service.AuthorService;
 import pl.yakub.book.service.BookService;
 
 import javax.inject.Inject;
+import java.util.Optional;
 
 
 @RestController
@@ -22,18 +23,27 @@ public class FakeController {
     @Inject
     private AuthorService authorService;
 
-    @GetMapping("addbook/{id}")
-    public Book addOneBook(@PathVariable Long id) {
-        return new Book("Tytul", new Author("Randowm"));
+    @GetMapping("addbook/{title}")
+    public Book addOneBook(@PathVariable String title) {
+        return bookService.addBook(title, "Randowm_" + Math.random());
     }
 
-    @GetMapping("book/insert/{title}/{author}")
+    @GetMapping("insert/book/{title}/{author}")
     public Book addBook(@PathVariable String title, @PathVariable String author) {
         return bookService.addBook(title, author);
     }
 
-    @GetMapping("author/insert/{author}")
+    @GetMapping("insert/author/{author}")
     public Author addAuthor(@PathVariable String author) {
         return authorService.addAuthor(new Author(author));
+    }
+
+    @GetMapping("insert/book/{bookId}/category/{category}")
+    public Book addCategory(@PathVariable Long bookId, @PathVariable String category) {
+        Optional<Book> bookById = bookService.getBookById(bookId);
+        if (bookById.isPresent()) {
+            bookService.addCategory(bookId, category);
+        }
+        return bookById.orElse(null);
     }
 }

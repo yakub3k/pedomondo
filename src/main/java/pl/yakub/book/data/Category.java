@@ -8,10 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Entity
@@ -27,8 +24,6 @@ public class Category {
     @Setter
     private String name;
 
-    @ManyToMany(mappedBy = "category")
-    private List<Book> books = new ArrayList<>();
 
     public Category(String name) {
         this.name = name;
