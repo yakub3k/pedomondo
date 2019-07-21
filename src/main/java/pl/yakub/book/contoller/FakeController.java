@@ -10,7 +10,6 @@ import pl.yakub.book.service.AuthorService;
 import pl.yakub.book.service.BookService;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 
 
 @RestController
@@ -25,14 +24,12 @@ public class FakeController {
 
     @GetMapping("addbook/{id}")
     public Book addOneBook(@PathVariable Long id) {
-        return new Book(id, "Tytul", new Author("Randowm"), new ArrayList<>());
+        return new Book("Tytul", new Author("Randowm"));
     }
 
     @GetMapping("book/insert/{title}/{author}")
     public Book addBook(@PathVariable String title, @PathVariable String author) {
-        Author currentAuthor = new Author(author);
-        authorService.addAuthor(currentAuthor);
-        return bookService.addBook(new Book(title, currentAuthor));
+        return bookService.addBook(title, author);
     }
 
     @GetMapping("author/insert/{author}")
