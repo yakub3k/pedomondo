@@ -4,9 +4,8 @@ CREATE TABLE users (
   password VARCHAR(30),
   email    VARCHAR(30)
 );
-
+--
 -- CREATE TABLE books (
 --   id       INTEGER PRIMARY KEY,
 --   title    VARCHAR(30),
---   author   VARCHAR(30),
 -- );

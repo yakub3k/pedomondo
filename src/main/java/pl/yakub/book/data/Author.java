@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +19,10 @@ public class Author {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    @Column(name = "author_id")
+    private Long id;
+
+    @Column(unique = true)
     private String name;
 
     @Setter

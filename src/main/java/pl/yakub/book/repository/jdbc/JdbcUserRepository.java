@@ -1,4 +1,4 @@
-package pl.yakub.book.repository;
+package pl.yakub.book.repository.jdbc;
 
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.RowMapper;
@@ -28,7 +28,7 @@ public class JdbcUserRepository implements UserRepository {
         params.put("login", login);
 
 //        return jdbcOperations.queryForObject(SELECT_USER_BY_LOGIN, params, new UserMapper());
-        return new User(1, "yakub", "pass", "email");
+        return new User(1L, "yakub", "pass", "email");
     }
 
     public static final class UserMapper implements RowMapper<User> {

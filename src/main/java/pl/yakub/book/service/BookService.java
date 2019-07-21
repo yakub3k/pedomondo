@@ -23,8 +23,15 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Optional<Book> getBookById(String id) {
-        return bookRepository.findById(Integer.parseInt(id));
+    public Optional<Book> getBookById(Integer id) {
+        return bookRepository.findById(id);
     }
 
+    public void deleteBook(Integer id) {
+        bookRepository.deleteById(id);
+    }
+
+    public Book addBook(Book book) {
+        return bookRepository.save(book);
+    }
 }

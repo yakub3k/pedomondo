@@ -18,7 +18,7 @@ public class Category {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
 
     @Setter
     private String name;
