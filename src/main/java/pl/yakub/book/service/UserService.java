@@ -6,6 +6,7 @@ import pl.yakub.book.repository.UserRepository;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -21,7 +22,21 @@ public class UserService {
         return repository.findAll();
     }
 
-    public void addUser(String login, String password, boolean admin) {
-        repository.save(new User());
+    public User addUser(User user) {
+        return repository.save(user);
+    }
+
+    public User getUser(Long id) {
+        return repository.findById(id)
+                .orElse(null);
+    }
+
+    public boolean delete(Long id) {
+        Optional<User> user = repository.findById(id);
+        if (user.isPresent()){
+            repository.delete(user.get());
+            return true;
+        }
+        return false;
     }
 }
