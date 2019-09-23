@@ -1,11 +1,11 @@
 package pl.yakub.book.contoller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.yakub.book.example.PrototypeScope;
 import pl.yakub.book.example.SingletonScope;
-import pl.yakub.book.service.ExampleService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,5 +41,15 @@ public class ExampleController {
     public List<PrototypeScope> getPrototype() {
         prototypeScope.setMessage("prototypeScope");
         return Arrays.asList(prototypeScope, prototypeScopeSecond);
+    }
+
+    @PostMapping(path = "post")
+    public String checkPostMethod() {
+        return "post";
+    }
+
+    @GetMapping(path = "get")
+    public String checkGetMethod() {
+        return "get";
     }
 }

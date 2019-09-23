@@ -1,6 +1,7 @@
 package pl.yakub.book.service;
 
 import org.springframework.stereotype.Service;
+import pl.yakub.book.components.HistoryComponent;
 import pl.yakub.book.data.User;
 import pl.yakub.book.repository.UserRepository;
 
@@ -12,18 +13,22 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository repository;
+    private final HistoryComponent history;
 
     @Inject
-    public UserService(UserRepository repository) {
+    public UserService(UserRepository repository, HistoryComponent history) {
         this.repository = repository;
+        this.history = history;
     }
 
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         return repository.findAll();
     }
 
     public User addUser(User user) {
-        return repository.save(user);
+        User addedUser = repository.save(user);
+        history.appendEventAdd("user: " + addedUser.getLogin());
+        return addedUser;
     }
 
     public User getUser(Long id) {
@@ -33,8 +38,11 @@ public class UserService {
 
     public boolean delete(Long id) {
         Optional<User> user = repository.findById(id);
-        if (user.isPresent()){
-            repository.delete(user.get());
+        if (user.isPresent()) {
+            User deletedUser = user.get();
+            repository.delete(deletedUser);
+            String login = deletedUser.getLogin();
+            history.appendEventDelete("user: " + login);
             return true;
         }
         return false;
